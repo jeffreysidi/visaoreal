@@ -26,69 +26,56 @@ export function HeroSection() {
         </div>
 
         <div className="max-w-2xl space-y-4">
-          {/* Visão Real Logo - LOGO OFICIAL HORIZONTAL */}
+          {/* Visão Real Logo - LOGO OFICIAL */}
           <div className="flex justify-center pb-0">
             <Image
-              src="/visao-real-logo-oficial.png"
+              src="/logo-visao-real-new.png"
               alt="Visão Real - Diagnóstico de Ideias, Produtos e Negócios"
-              width={320}
-              height={120}
-              className="h-auto w-auto max-w-full md:max-w-xl"
+              width={380}
+              height={140}
+              className="h-auto w-auto max-w-full md:max-w-2xl"
               priority
             />
           </div>
 
-          <p className="text-balance text-lg font-semibold text-foreground leading-tight">
-            Saia da indecisão.<br />
-            Direção clara para o próximo passo.
-          </p>
+          <h1 className="text-balance text-2xl font-bold text-foreground leading-tight md:text-3xl">
+            Descubra o que está impedindo seu negócio de crescer
+          </h1>
 
-          <p className="text-balance text-base text-foreground/70 leading-relaxed max-w-xl mx-auto">
-            Para ideias, produtos e negócios.
-          </p>
+          <h2 className="text-balance text-base text-foreground/80 leading-relaxed max-w-xl mx-auto pt-2">
+            Em 3 minutos você entende o principal problema — e sabe por onde começar.
+          </h2>
 
-          <p className="text-balance text-sm text-foreground/60 leading-relaxed max-w-xl mx-auto pt-1">
-            Diagnóstico rápido para transformar reflexão em decisão.
-          </p>
-
-          <div className="flex flex-col gap-2 sm:flex-row sm:justify-center sm:gap-3 pt-3">
+          <div className="flex justify-center pt-6">
             <Button
               size="lg"
               onClick={handleIniciarDiagnostico}
-              className="rounded-xl h-12 px-8 font-semibold shadow-sm hover:shadow-md transition-shadow"
+              className="rounded-xl h-12 px-10 font-semibold shadow-md hover:shadow-lg transition-shadow bg-primary hover:bg-primary/90 text-primary-foreground text-base"
             >
-              Iniciar Diagnóstico
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={handleSaibaMais}
-              className="rounded-xl h-12 px-8 font-semibold border-border/40 hover:bg-slate-50 transition-colors bg-transparent"
-            >
-              Saiba Mais
+              Começar diagnóstico gratuito
             </Button>
           </div>
 
-          <p className="text-balance text-sm font-bold text-primary leading-relaxed pt-2">
-            3 minutos. Sem custo. Sem cadastro.
+          <p className="text-balance text-xs text-foreground/60 leading-relaxed pt-2">
+            Sem cadastro. Resultado imediato.
           </p>
         </div>
 
-        {/* Trust indicators */}
+        {/* Trust indicators - Navy-light background */}
         <div className="mt-1 max-w-4xl pt-1 pb-2 border-t border-border/20">
           <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
-            <div className="flex items-center justify-center rounded-xl bg-slate-50 px-3 py-1.5 border border-border/20">
-              <span className="text-xs font-medium text-foreground/70">
+            <div className="flex items-center justify-center rounded-xl bg-blue-900/30 px-3 py-1.5 border border-blue-400/30">
+              <span className="text-xs font-medium text-blue-200">
                 Análise Profissional
               </span>
             </div>
-            <div className="flex items-center justify-center rounded-xl bg-slate-50 px-3 py-1.5 border border-border/20">
-              <span className="text-xs font-medium text-foreground/70">
+            <div className="flex items-center justify-center rounded-xl bg-blue-900/30 px-3 py-1.5 border border-blue-400/30">
+              <span className="text-xs font-medium text-blue-200">
                 Feedback Imediato
               </span>
             </div>
-            <div className="flex items-center justify-center rounded-xl bg-slate-50 px-3 py-1.5 border border-border/20">
-              <span className="text-xs font-medium text-foreground/70">
+            <div className="flex items-center justify-center rounded-xl bg-blue-900/30 px-3 py-1.5 border border-blue-400/30">
+              <span className="text-xs font-medium text-blue-200">
                 Baseado em Dados
               </span>
             </div>

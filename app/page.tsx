@@ -1,14 +1,14 @@
 'use client'
 
 import { HeroSection } from '@/components/hero-section'
-import { QuizSection } from '@/components/quiz-section'
+import { QuizSectionV8 } from '@/components/quiz-section-v8'
 import { SaibaMaisSection } from '@/components/saiba-mais'
 
 export default function Home() {
   return (
     <main className="w-full bg-background text-foreground">
       <HeroSection />
-      <QuizSection />
+      <QuizSectionV8 />
       <SaibaMaisSection />
     </main>
   )

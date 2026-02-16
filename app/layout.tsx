@@ -1,33 +1,45 @@
 import React from "react"
 import type { Metadata } from 'next'
 import Script from 'next/script'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Inter, Space_Grotesk } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: '--font-inter' })
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: '--font-space-grotesk' })
 
 export const metadata: Metadata = {
-  title: 'Visão Real - Diagnóstico de Ideias de Negócios',
-  description: 'Ferramenta institucional para validação inicial de projetos e ideias de negócios. Receba um diagnóstico profissional sobre o potencial da sua ideia.',
+  title: 'Visão Real | Descubra o que está impedindo seu negócio de crescer',
+  description: 'Diagnóstico estratégico online que identifica o principal problema do seu negócio. Em 3 minutos você entende o que está impedindo seu crescimento.',
   generator: 'v0.app',
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
+        url: '/icon0.svg',
         type: 'image/svg+xml',
+      },
+      {
+        url: '/icon1.png',
+        sizes: '32x32',
+        type: 'image/png',
       },
     ],
     apple: '/apple-icon.png',
+  },
+  manifest: '/manifest.json',
+  themeColor: '#131625',
+  openGraph: {
+    title: 'Visão Real | Descubra o que está impedindo seu negócio de crescer',
+    description: 'Diagnóstico estratégico online que identifica o principal problema do seu negócio em 3 minutos.',
+    type: 'website',
+    images: [
+      {
+        url: '/icon1.png',
+        width: 32,
+        height: 32,
+        alt: 'Visão Real Logo',
+      },
+    ],
   },
 }
 
@@ -38,7 +50,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans antialiased w-full h-screen overflow-x-hidden`}>
+      <head>
+        <link rel="icon" type="image/svg+xml" href="/icon0.svg" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/icon1.png" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#131625" />
+      </head>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} font-inter antialiased w-full h-screen overflow-x-hidden bg-[#091019] text-foreground`}>
         {children}
         <Analytics />
         <Script
@@ -51,6 +70,23 @@ export default function RootLayout({
                 t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
                 y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
               })(window, document, "clarity", "script", "vc8ll2hllo");
+            `
+          }}
+        />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-NM3PTH3LLS"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){window.dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-NM3PTH3LLS');
+              gtag('config', 'AW-17950470830');
             `
           }}
         />

@@ -38,7 +38,7 @@ export function DiagnosisResultComponent({
         <div className="flex justify-center">
           {/* Logo oficial reduzido em largura, margem mínima */}
           <Image
-            src="/visao-real-logo-oficial.png"
+            src="/logo-visao-real-new.png"
             alt="Visão Real - Diagnóstico de Ideias, Produtos e Negócios"
             width={200}
             height={75}

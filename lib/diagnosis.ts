@@ -389,12 +389,10 @@ const DIAGNOSES: Record<number, DiagnosisResult> = {
 
 export function getDiagnosis(variables: InternalVariables): DiagnosisResult {
   // ============================================
-  // ORDEM DE DECISÃO OBRIGATÓRIA
+  // REFATORAÇÃO COMPLETA - ORDEM: ESPECÍFICO → GENÉRICO
   // ============================================
-  // 1) MATURIDADE DO NEGÓCIO
-  // 2) TIPO DE OPERAÇÃO
-  // 3) GARGALO PRINCIPAL
-  // 4) RECURSOS + VISIBILIDADE
+  // Princípio: Diagnósticos altamente específicos primeiro
+  // Fallback final APENAS se nenhuma condição foi satisfeita
 
   const maturidade = variables.maturidade_negocio
   const tipoOp = variables.tipo_operacao
@@ -403,171 +401,222 @@ export function getDiagnosis(variables: InternalVariables): DiagnosisResult {
   const autoridade = variables.nivel_autoridade
   const estagio = variables.estagio_atual
   const dor = variables.tipo_dor
+  const servicoSituacao = variables.servico_situacao_atual
+  const operacaoLocalSituacao = variables.operacao_local_situacao
+  const digitalSituacao = variables.digital_situacao_atual
+  const produtoFisicoSituacao = variables.produto_fisico_situacao
+  const projetoExperimentalSituacao = variables.projeto_experimental_situacao
 
   // ============================================
-  // ROTA 1 — IDEIA / PROJETO EM CONCEPÇÃO
+  // TIER 1: DIAGNÓSTICOS EXTREMAMENTE ESPECÍFICOS
   // ============================================
-  if (maturidade === 'IDEIA' || maturidade === 'MVP' && estagio === 'ideacao') {
-    // Avaliar clareza da dor
+
+  // D01: Ideia muito pouco definida
+  if (maturidade === 'IDEIA') {
     const dorPoucoClara = dor === 'indefinido' || dor === 'dor_pessoal' || dor === 'mitigacao_risco'
-    const dorMedia = dor === 'eficiencia_financeira' || dor === 'eficiencia_operacional'
-    const dorAlta = dor === 'crescimento_receita'
-
     if (dorPoucoClara) {
-      return DIAGNOSES[1] // D01: Ideia ainda pouco definida
-    }
-
-    if (dorMedia) {
-      return DIAGNOSES[2] // D02: Problema claro, solução genérica
-    }
-
-    if (dorAlta && recursos === 'baixo') {
-      return DIAGNOSES[3] // D03: Boa ideia sem validação prática
-    }
-
-    if (dorAlta && (recursos === 'capital_moderado' || recursos === 'alto' || recursos === 'tempo_sem_capital')) {
-      return DIAGNOSES[4] // D04: Validação informal confundida com validação real
+      return DIAGNOSES[1]
     }
   }
 
-  // ============================================
-  // ROTA 2 — NEGÓCIO EM OPERAÇÃO
-  // ============================================
-  if (maturidade === 'OPERACAO' && estagio === 'operacao_sem_tracao') {
-    if (gargalo === 'trafego') {
-      return DIAGNOSES[5] // D05: Execução sem critério de sucesso
-    }
-
-    if (gargalo === 'conversao') {
-      return DIAGNOSES[6] // D06: Operação inicial sem foco
-    }
-
-    if (gargalo === 'investimento' || gargalo === 'clarity') {
-      return DIAGNOSES[7] // D07: Produto existe, mas não traciona
-    }
+  // D03: Boa ideia sem validação prática
+  if (maturidade === 'IDEIA' && dor === 'crescimento_receita' && recursos === 'baixo') {
+    return DIAGNOSES[3]
   }
 
-  // ============================================
-  // ROTA 3 — NEGÓCIO DIGITAL
-  // ============================================
-  if (tipoOp === 'DIGITAL') {
-    if (recursos === 'baixo' && autoridade === 'nenhuma') {
-      return DIAGNOSES[8] // D08: Negócio dependente do fundador
-    }
-
-    if (recursos === 'capital_moderado' && autoridade === 'nenhuma') {
-      return DIAGNOSES[9] // D09: Negócio saudável, porém estagnado
-    }
-
-    if ((recursos === 'alto' || recursos === 'capital_moderado') && gargalo === 'execucao') {
-      return DIAGNOSES[10] // D10: Volume existe, margem é fraca
-    }
+  // D05: Execução sem critério de sucesso (muito específico)
+  if (maturidade === 'OPERACAO' && estagio === 'operacao_sem_tracao' && gargalo === 'trafego') {
+    return DIAGNOSES[5]
   }
 
-  // ============================================
-  // ROTA 4 — SERVIÇO / NEGÓCIO LOCAL
-  // ============================================
-  if (tipoOp === 'SERVICO' || tipoOp === 'LOCAL') {
-    const servicoSituacao = variables.servico_situacao_atual
-    const operacaoLocalSituacao = variables.operacao_local_situacao
-
-    // Dependência do fundador alta
-    if (servicoSituacao === 'dependencia_fundador' || operacaoLocalSituacao === 'dependencia_fundador') {
-      return DIAGNOSES[11] // D11: Produto bom, comunicação fraca
-    }
-
-    // Operação funciona mas crescimento travado
-    if (servicoSituacao === 'sem_escala' || operacaoLocalSituacao === 'estagnado') {
-      return DIAGNOSES[12] // D12: Forte tecnicamente, frágil comercialmente
-    }
-
-    // Negócio está saudável
-    if (servicoSituacao === 'saudavel_sem_direcao' || operacaoLocalSituacao === 'saudavel_sem_expansao') {
-      return DIAGNOSES[19] // D19: Negócio saudável e bem posicionado
-    }
-  }
-
-  // ============================================
-  // ROTA 5 — PRODUTO FÍSICO
-  // ============================================
-  if (tipoOp === 'PRODUTO_FISICO') {
-    const produtoFisicoSituacao = variables.produto_fisico_situacao
-
-    // Custo estrutural alto e margem incerta
-    if (produtoFisicoSituacao === 'margem_baixa' || produtoFisicoSituacao === 'producao_desorganizada') {
-      return DIAGNOSES[13] // D13: Muitas ideias, pouca priorização
-    }
-
-    // Validação existe mas escala trava
-    if (produtoFisicoSituacao === 'escala_travada') {
-      return DIAGNOSES[14] // D14: Desejo de crescer sem base sólida
-    }
-
-    // Operação é estável mas precisa reposicionar
-    if (produtoFisicoSituacao === 'validacao_dificil') {
-      return DIAGNOSES[20] // D20: Negócio funcional que pede reposicionamento
-    }
-  }
-
-  // ============================================
-  // ROTA 6 — AVALIAÇÃO FINAL POSITIVA
-  // ============================================
-  // Se maturidade é operação com tração e sem gargalos críticos
-  if (maturidade === 'OPERACAO' && estagio === 'tracao_inicial') {
-    const gargalosCriticos = gargalo === 'clarity' || gargalo === 'execucao' || gargalo === 'investimento'
-
-    if (!gargalosCriticos && autoridade !== 'nenhuma') {
-      return DIAGNOSES[19] // D19: Negócio saudável e bem posicionado
-    }
-
-    // Se funciona mas é posicionamento
-    if (gargalo === 'trafego' && (tipoOp === 'DIGITAL' || tipoOp === 'SERVICO')) {
-      return DIAGNOSES[20] // D20: Negócio funcional que pede reposicionamento
-    }
-  }
-
-  // ============================================
-  // ROTA 7 — EXCESSO DE ANÁLISE
-  // ============================================
-  // Se usuário demonstra clareza alta mas continua com dúvida excessiva
+  // D10: Volume existe, margem é fraca (específico para DIGITAL com execução)
   if (
+    tipoOp === 'DIGITAL' &&
+    (recursos === 'alto' || recursos === 'capital_moderado') &&
+    gargalo === 'execucao'
+  ) {
+    return DIAGNOSES[10]
+  }
+
+  // D13: Muitas ideias, pouca priorização (específico para PRODUTO_FISICO com problemas estruturais)
+  if (
+    tipoOp === 'PRODUTO_FISICO' &&
+    (produtoFisicoSituacao === 'margem_baixa' || produtoFisicoSituacao === 'producao_desorganizada')
+  ) {
+    return DIAGNOSES[13]
+  }
+
+  // D14: Desejo de crescer sem base sólida (específico para PRODUTO_FISICO travado)
+  if (tipoOp === 'PRODUTO_FISICO' && produtoFisicoSituacao === 'escala_travada') {
+    return DIAGNOSES[14]
+  }
+
+  // D20: Negócio funcional que pede reposicionamento (específico)
+  if (
+    tipoOp === 'PRODUTO_FISICO' &&
+    produtoFisicoSituacao === 'validacao_dificil'
+  ) {
+    return DIAGNOSES[20]
+  }
+
+  // ============================================
+  // TIER 2: DIAGNÓSTICOS INTERMEDIÁRIOS
+  // ============================================
+
+  // D02: Problema claro, solução genérica (IDEIA com dor média)
+  if (maturidade === 'IDEIA') {
+    const dorMedia = dor === 'eficiencia_financeira' || dor === 'eficiencia_operacional'
+    if (dorMedia) {
+      return DIAGNOSES[2]
+    }
+  }
+
+  // D04: Validação informal confundida com validação real (IDEIA com recursos)
+  if (
+    maturidade === 'IDEIA' &&
+    dor === 'crescimento_receita' &&
+    (recursos === 'capital_moderado' || recursos === 'alto' || recursos === 'tempo')
+  ) {
+    return DIAGNOSES[4]
+  }
+
+  // D06: Operação inicial sem foco (OPERACAO com gargalo de conversão)
+  if (maturidade === 'OPERACAO' && estagio === 'operacao_sem_tracao' && gargalo === 'conversao') {
+    return DIAGNOSES[6]
+  }
+
+  // D07: Produto existe, mas não traciona (OPERACAO genérico)
+  if (maturidade === 'OPERACAO' && estagio === 'operacao_sem_tracao') {
+    return DIAGNOSES[7]
+  }
+
+  // D08: Dependência do fundador (DIGITAL com recursos baixos)
+  if (tipoOp === 'DIGITAL' && recursos === 'baixo' && autoridade === 'nenhuma') {
+    return DIAGNOSES[8]
+  }
+
+  // D09: Negócio saudável, porém estagnado (DIGITAL com recursos moderados)
+  if (tipoOp === 'DIGITAL' && recursos === 'capital_moderado' && autoridade === 'nenhuma') {
+    return DIAGNOSES[9]
+  }
+
+  // D11: Produto bom, comunicação fraca (SERVICO com dependência do fundador)
+  if (
+    (tipoOp === 'SERVICO' || tipoOp === 'LOCAL') &&
+    (servicoSituacao === 'dependencia_fundador' || operacaoLocalSituacao === 'dependencia_fundador')
+  ) {
+    return DIAGNOSES[11]
+  }
+
+  // D12: Forte tecnicamente, frágil comercialmente (SERVICO/LOCAL sem escala)
+  if (
+    (tipoOp === 'SERVICO' || tipoOp === 'LOCAL') &&
+    (servicoSituacao === 'sem_escala' || operacaoLocalSituacao === 'estagnado')
+  ) {
+    return DIAGNOSES[12]
+  }
+
+  // ============================================
+  // TIER 3: CRESCIMENTO (NOVAS CONDIÇÕES ATIVAS)
+  // ============================================
+
+  // D15: Momento de decisão estratégica (CRESCIMENTO + indecisão)
+  if (
+    maturidade === 'CRESCIMENTO' &&
+    recursos === 'capital_moderado' &&
+    gargalo === 'clarity'
+  ) {
+    return DIAGNOSES[15]
+  }
+
+  // D16: Pronto para otimização (CRESCIMENTO + operação estável + sem gargalos críticos)
+  if (
+    maturidade === 'CRESCIMENTO' &&
+    (recursos === 'capital_moderado' || recursos === 'alto') &&
+    gargalo !== 'clarity' &&
+    autoridade !== 'nenhuma'
+  ) {
+    return DIAGNOSES[16]
+  }
+
+  // D17: Pronto para crescimento estruturado (CRESCIMENTO + base validada + recursos altos)
+  if (
+    maturidade === 'CRESCIMENTO' &&
+    recursos === 'alto' &&
+    autoridade === 'alta' &&
+    gargalo !== 'clarity'
+  ) {
+    return DIAGNOSES[17]
+  }
+
+  // ============================================
+  // TIER 4: DIAGNÓSTICOS FINAIS (ANTES DO FALLBACK)
+  // ============================================
+
+  // D21: Clareza alcançada, ação necessária (para múltiplos cenários)
+  if (
+    maturidade === 'OPERACAO' &&
     estagio === 'tracao_inicial' &&
     autoridade !== 'nenhuma' &&
     gargalo === 'clarity' &&
     recursos !== 'baixo'
   ) {
-    return DIAGNOSES[21] // D21: Clareza alcançada, ação necessária
+    return DIAGNOSES[21]
+  }
+
+  // D19: Negócio saudável e bem posicionado (MUITO ESPECÍFICO AGORA - não é fallback genérico)
+  // Apenas para SERVICO/LOCAL explicitamente saudável OU OPERACAO com tração sem gargalos
+  if (tipoOp === 'SERVICO' || tipoOp === 'LOCAL') {
+    if (
+      (servicoSituacao === 'saudavel_sem_direcao' || operacaoLocalSituacao === 'saudavel_sem_expansao') &&
+      autoridade !== 'nenhuma'
+    ) {
+      return DIAGNOSES[19]
+    }
+  }
+
+  if (
+    maturidade === 'OPERACAO' &&
+    estagio === 'tracao_inicial' &&
+    gargalo !== 'clarity' &&
+    autoridade !== 'nenhuma' &&
+    recursos !== 'baixo'
+  ) {
+    return DIAGNOSES[19]
   }
 
   // ============================================
   // FALLBACKS ESTRUTURADOS POR ESTÁGIO
+  // (Apenas se nenhuma condição anterior foi satisfeita)
   // ============================================
 
-  // Se está em ideação mas não bateu em nenhuma rota específica
+  // Se está em ideação
   if (estagio === 'ideacao') {
-    return DIAGNOSES[1] // D01: Ideia ainda pouco definida
+    return DIAGNOSES[1]
   }
 
   // Se está em validação
   if (estagio === 'validacao') {
-    return DIAGNOSES[4] // D04: Validação informal confundida com validação real
+    return DIAGNOSES[4]
   }
 
   // Se está em MVP inicial
   if (estagio === 'mvp_inicial') {
-    return DIAGNOSES[5] // D05: Execução sem critério de sucesso
+    return DIAGNOSES[5]
   }
 
   // Se está em operação sem tração
   if (estagio === 'operacao_sem_tracao') {
-    return DIAGNOSES[7] // D07: Produto existe, mas não traciona
+    return DIAGNOSES[7]
   }
 
-  // Se está em tração inicial
+  // Se está em tração inicial (fallback seguro para crescimento)
   if (estagio === 'tracao_inicial') {
-    return DIAGNOSES[19] // D19: Negócio saudável e bem posicionado
+    return DIAGNOSES[19]
   }
 
-  // Fallback final seguro
-  return DIAGNOSES[5] // D05: Execução sem critério de sucesso
+  // ============================================
+  // FALLBACK FINAL SEGURO (NUNCA DEVE CHEGAR AQUI)
+  // ============================================
+  return DIAGNOSES[19] // Negócio saudável - menos dramático que D05
 }

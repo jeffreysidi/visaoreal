@@ -29,14 +29,14 @@ export default function RelatorioEstrategico() {
       />
 
       {/* LOGO HEADER */}
-      <div className="bg-white px-4 py-4">
+      <div className="bg-background px-4 py-4">
         <div className="flex justify-center">
           <Image
-            src="/visao-real-logo-oficial.png"
+            src="/logo-visao-real-new.png"
             alt="Visão Real - Diagnóstico de Ideias, Produtos e Negócios"
-            width={200}
-            height={75}
-            className="h-auto w-auto max-w-xs"
+            width={280}
+            height={100}
+            className="h-auto w-auto max-w-sm"
             priority
           />
         </div>
@@ -109,16 +109,9 @@ export default function RelatorioEstrategico() {
             </p>
           </div>
 
-          {/* Checkout do Stripe */}
-          <div className="border border-slate-200 rounded-xl overflow-hidden bg-white">
-            <div className="bg-gradient-to-r from-slate-50 to-blue-50 px-8 py-6 border-b border-slate-200">
-              <p className="text-sm text-slate-600">
-                Prossiga para confirmar seu pagamento de forma segura com Stripe
-              </p>
-            </div>
-            
-            {/* Stripe Buy Button Oficial */}
-            <div className="p-8 flex justify-center">
+          {/* Checkout do Stripe - Sem Box, apenas borda azul */}
+          <div className="border-b-2 border-blue-400/50 py-8">
+            <div className="flex justify-center">
               <stripe-buy-button
                 buy-button-id="buy_btn_1SwUgYFUQ2CSrSZXXYE4L0Gs"
                 publishable-key="pk_live_51SwSVnFUQ2CSrSZX15h9htBOprc0v0ugwPBdw36kkMjijP2CSu2FWWtbUjrQehmAwknGbiD1URzxZMnYF5vyS7Kk00DYtti7N0"
@@ -126,22 +119,35 @@ export default function RelatorioEstrategico() {
             </div>
           </div>
 
-          {/* Nota Disclamer */}
-          <div className="bg-slate-50 border border-slate-200 rounded-lg p-6 text-center">
-            <p className="text-xs text-slate-600 leading-relaxed">
-              Este relatório não é coaching, mentoria motivacional ou curso. 
-              Trata-se de um diagnóstico estratégico objetivo entregue em até 24 horas 
-              após o preenchimento do formulário complementar.
-            </p>
-          </div>
+          {/* Disclaimer texto simples - sem box */}
+          <p className="text-xs text-slate-600 leading-relaxed text-center">
+            Este relatório não é coaching, mentoria motivacional ou curso. 
+            Trata-se de um diagnóstico estratégico objetivo entregue em até 24 horas 
+            após o preenchimento do formulário complementar.
+          </p>
 
-          {/* Botão Alternativo de Voltar */}
-          <div className="text-center">
+          {/* Botão de Voltar */}
+          <div className="flex justify-center pt-4">
             <Button
               variant="outline"
               onClick={() => router.back()}
-              className="rounded-lg border-slate-200 hover:bg-slate-50"
+              style={{
+                backgroundColor: 'transparent',
+                color: '#ffffff',
+                borderColor: '#60A5FA',
+                borderWidth: '2px',
+              }}
+              className="gap-2 rounded-lg transition-all duration-200"
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#1E3A8A';
+                e.currentTarget.style.borderColor = '#3B82F6';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'transparent';
+                e.currentTarget.style.borderColor = '#60A5FA';
+              }}
             >
+              <ArrowLeft className="w-4 h-4" />
               Voltar para o diagnóstico
             </Button>
           </div>

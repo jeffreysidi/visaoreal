@@ -2,12 +2,22 @@
 
 import React, { useEffect, useState } from "react"
 import Image from 'next/image'
+import Script from 'next/script'
 
 export default function PagamentoConfirmado() {
   const [quizData, setQuizData] = useState<any>(null)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    // Dispara evento de conversão do Google Ads
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'conversion', {
+        send_to: 'AW-17950470830/IBgOCKiUovkbEK7lue9C',
+        value: 297.0,
+        currency: 'BRL'
+      })
+    }
+
     // Read quiz data from localStorage
     if (typeof window !== 'undefined') {
       const storedData = localStorage.getItem('quizData')
@@ -62,10 +72,10 @@ export default function PagamentoConfirmado() {
           {/* LOGO - Topo da página */}
           <div className="flex justify-center pb-6">
             <Image
-              src="/visao-real-logo-completo.png"
+              src="/logo-visao-real-new.png"
               alt="Visão Real"
-              width={200}
-              height={150}
+              width={280}
+              height={100}
               className="h-auto w-auto"
               priority
             />
