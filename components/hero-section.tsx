@@ -4,13 +4,6 @@ import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 
 export function HeroSection() {
-  const handleSaibaMais = () => {
-    const element = document.getElementById('saiba-mais-section')
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
-  }
-
   const handleIniciarDiagnostico = () => {
     const element = document.getElementById('diagnostico')
     if (element) {
@@ -19,68 +12,72 @@ export function HeroSection() {
   }
 
   return (
-    <section className="relative flex flex-col items-center justify-start gap-3 px-4 py-4 text-center md:justify-center md:h-screen md:py-10">
-        {/* Subtle background accent */}
-        <div className="absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute right-0 top-0 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
+    <main className="min-h-screen bg-background text-foreground">
+      {/* HEADER - Logo */}
+      <header className="bg-background border-b border-border px-4 py-6">
+        <div className="flex justify-center max-w-7xl mx-auto">
+          <Image
+            src="/logo-visao-real-new.png"
+            alt="Visão Real"
+            width={280}
+            height={100}
+            className="h-auto w-auto max-w-xs"
+            priority
+          />
         </div>
+      </header>
 
-        <div className="max-w-2xl space-y-4">
-          {/* Visão Real Logo - LOGO OFICIAL */}
-          <div className="flex justify-center pb-0">
-            <Image
-              src="/logo-visao-real-new.png"
-              alt="Visão Real - Diagnóstico de Ideias, Produtos e Negócios"
-              width={380}
-              height={140}
-              className="h-auto w-auto max-w-full md:max-w-2xl"
-              priority
-            />
-          </div>
-
-          <h1 className="text-balance text-2xl font-bold text-foreground leading-tight md:text-3xl">
-            Descubra o que está impedindo seu negócio de crescer
-          </h1>
-
-          <h2 className="text-balance text-base text-foreground/80 leading-relaxed max-w-xl mx-auto pt-2">
-            Em 3 minutos você entende o principal problema — e sabe por onde começar.
-          </h2>
-
-          <div className="flex justify-center pt-6">
-            <Button
-              size="lg"
-              onClick={handleIniciarDiagnostico}
-              className="rounded-xl h-12 px-10 font-semibold shadow-md hover:shadow-lg transition-shadow bg-primary hover:bg-primary/90 text-primary-foreground text-base"
-            >
-              Começar diagnóstico gratuito
-            </Button>
-          </div>
-
-          <p className="text-balance text-xs text-foreground/60 leading-relaxed pt-2">
-            Sem cadastro. Resultado imediato.
-          </p>
+      {/* HERO CONTENT */}
+      <div className="flex-1 px-4 py-16 sm:py-20">
+        <div className="w-full max-w-4xl mx-auto space-y-16 sm:space-y-20">
+          {/* SEÇÃO 1: HERO */}
+          <section className="space-y-6">
+            <div className="space-y-4">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-foreground leading-[1.045] text-balance max-w-full lg:max-w-[70%]" style={{ letterSpacing: '-0.02em' }}>
+                Descubra a <span className="hero-highlight">direção</span> certa para o seu negócio.
+              </h1>
+              
+              {/* Subtítulo Principal (Autoridade) */}
+              <p className="text-base sm:text-lg text-foreground/85 leading-relaxed max-w-full lg:max-w-[75%] text-balance mt-4" style={{ fontSize: '0.92rem', lineHeight: '1.59' }}>
+                Receba uma análise estruturada que identifica o ponto mais relevante do seu negócio e indica o próximo passo com clareza.
+              </p>
+              
+              {/* Linha Adicional (Velocidade) - 10% menor, opacidade 85% */}
+              <p className="text-sm sm:text-base text-foreground/80 leading-relaxed max-w-full lg:max-w-[75%] text-balance mt-3" style={{ fontSize: '0.828rem', lineHeight: '1.47' }}>
+                Em 3 minutos você entende o principal ponto crítico — e sabe exatamente por onde começar.
+              </p>
+            </div>
+            
+            {/* CTA Button */}
+            <div className="flex flex-col sm:flex-row gap-3 pt-4 justify-start sm:justify-start">
+              <Button 
+                onClick={handleIniciarDiagnostico}
+                size="lg"
+                className="w-[92%] sm:w-auto text-base font-semibold h-14 rounded-[12px] text-[#0F2E5A] transition-all"
+                style={{ 
+                  backgroundColor: '#E6B54A', 
+                  borderColor: '#E6B54A',
+                  paddingLeft: 'calc(2.5rem - 6%)',
+                  paddingRight: 'calc(2.5rem - 6%)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#D9A843'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#E6B54A'
+                }}
+              >
+                Iniciar diagnóstico gratuito
+              </Button>
+            </div>
+            
+            {/* Microcopy */}
+            <p className="text-sm text-foreground/75 pt-2">
+              Sem cadastro. Resultado imediato.
+            </p>
+          </section>
         </div>
-
-        {/* Trust indicators - Navy-light background */}
-        <div className="mt-1 max-w-4xl pt-1 pb-2 border-t border-border/20">
-          <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
-            <div className="flex items-center justify-center rounded-xl bg-blue-900/30 px-3 py-1.5 border border-blue-400/30">
-              <span className="text-xs font-medium text-blue-200">
-                Análise Profissional
-              </span>
-            </div>
-            <div className="flex items-center justify-center rounded-xl bg-blue-900/30 px-3 py-1.5 border border-blue-400/30">
-              <span className="text-xs font-medium text-blue-200">
-                Feedback Imediato
-              </span>
-            </div>
-            <div className="flex items-center justify-center rounded-xl bg-blue-900/30 px-3 py-1.5 border border-blue-400/30">
-              <span className="text-xs font-medium text-blue-200">
-                Baseado em Dados
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
-    )
+      </div>
+    </main>
+  )
 }

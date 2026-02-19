@@ -215,30 +215,32 @@ export default function RelatorioEstrategico() {
                 </p>
               </div>
             </div>
-            <Button 
-              onClick={() => {
-                const elemento = document.getElementById('bloco-pagamento')
-                if (elemento) {
-                  elemento.scrollIntoView({ behavior: 'smooth', block: 'center' })
-                }
-              }}
-              size="lg"
-              className="w-full text-base font-semibold h-14 rounded-[12px] text-[#0F2E5A] transition-all"
-              style={{ 
-                backgroundColor: '#E6B54A', 
-                borderColor: '#E6B54A',
-                paddingLeft: 'calc(2.5rem - 6%)',
-                paddingRight: 'calc(2.5rem - 6%)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#D9A843'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#E6B54A'
-              }}
-            >
-              Quero receber meu Relatório Estratégico
-            </Button>
+            <div className="flex justify-center">
+              <Button 
+                onClick={() => {
+                  const elemento = document.getElementById('bloco-pagamento')
+                  if (elemento) {
+                    elemento.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                  }
+                }}
+                size="lg"
+                className="w-[90%] sm:w-auto sm:max-w-[420px] text-[0.928rem] font-semibold h-12 rounded-[12px] text-white transition-all"
+                style={{ 
+                  backgroundColor: '#0EA5B7', 
+                  borderColor: '#0EA5B7',
+                  paddingLeft: '2rem',
+                  paddingRight: '2rem',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#0D94A3'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#0EA5B7'
+                }}
+              >
+                Quero receber meu Relatório Estratégico
+              </Button>
+            </div>
             <p className="text-sm text-foreground/50 text-center">
               Você será direcionado para o pagamento seguro no Stripe.
             </p>
