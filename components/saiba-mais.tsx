@@ -49,7 +49,7 @@ export function SaibaMaisSection({ onStartQuiz }) {
                 </li>
                 <li className="text-sm leading-relaxed text-foreground/85 flex gap-3">
                   <span className="text-primary font-bold flex-shrink-0">–</span>
-                  <span>o nível de maturidade (TRL aproximado)</span>
+                  <span>o nível real de maturidade estrutural</span>
                 </li>
                 <li className="text-base leading-relaxed text-foreground/85 flex gap-3">
                   <span className="text-primary font-bold flex-shrink-0">–</span>

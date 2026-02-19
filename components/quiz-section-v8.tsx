@@ -11,7 +11,7 @@ import { Search } from 'lucide-react'
 import Image from 'next/image'
 import { PERGUNTAS_V8 } from '@/lib/quiz-v8/answers'
 import { gerarDiagnostico, type DiagnosticoResult } from '@/lib/quiz-v8/engine'
-import { DIAGNOSTICOS } from '@/lib/quiz-v8/diagnosticos'
+import { obterDiagnosticoComFoco } from '@/lib/quiz-v8/focus-modulo'
 
 type QuizAnswers = {
   p1: number | null
@@ -218,10 +218,14 @@ export function QuizSectionV8() {
               </CardHeader>
 
               <CardContent className="space-y-12 pt-8">
-                {/* Obter textos do diagnóstico */}
+                {/* Obter diagnóstico com foco aplicado (variação ou base) */}
                 {(() => {
-                  const textos = DIAGNOSTICOS[diagnostico.trilha as keyof typeof DIAGNOSTICOS]?.[diagnostico.nivel as keyof typeof DIAGNOSTICOS['IDEIA']]
-                  if (!textos) return null
+                  // SISTEMA B: Buscar variação completa se foco existe, senão retorna base
+                  const textos = obterDiagnosticoComFoco(
+                    diagnostico.trilha,
+                    diagnostico.nivel,
+                    diagnostico.foco ?? null
+                  )
 
                   return (
                     <>
@@ -300,16 +304,26 @@ export function QuizSectionV8() {
                         </h4>
                         {textos.plano && (
                           <div className="space-y-4">
-                            {Object.entries(textos.plano).map(([area, descricao]) => (
-                              <div key={area} className="backdrop-blur-sm bg-blue-500/5 border border-border rounded-lg p-4 space-y-2 shadow-sm">
-                                <h5 className="font-semibold text-foreground capitalize text-base">
-                                  {area.replace(/_/g, ' ')}
-                                </h5>
-                                <p className="text-foreground text-sm leading-relaxed">
-                                  {descricao}
-                                </p>
-                              </div>
-                            ))}
+                            {Object.entries(textos.plano).map(([area, descricao]) => {
+                              const labelMap: Record<string, string> = {
+                                autoridade: 'Autoridade',
+                                clareza: 'Clareza',
+                                execucao: 'Execução',
+                                estrategia: 'Estratégia',
+                                capital: 'Capital'
+                              }
+                              const label = labelMap[area] || area
+                              return (
+                                <div key={area} className="backdrop-blur-sm bg-blue-500/5 border border-border rounded-lg p-4 space-y-2 shadow-sm">
+                                  <h5 className="font-semibold text-foreground text-base">
+                                    {label}
+                                  </h5>
+                                  <p className="text-foreground text-sm leading-relaxed">
+                                    {descricao}
+                                  </p>
+                                </div>
+                              )
+                            })}
                           </div>
                         )}
                       </div>

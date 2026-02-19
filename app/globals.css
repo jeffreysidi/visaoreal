@@ -5,15 +5,13 @@
 
 html, body {
   width: 100%;
-  height: 100%;
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
 }
 
 :root {
-  --font-inter: 'Inter', sans-serif;
-  --font-space-grotesk: 'Space Grotesk', sans-serif;
+  --font-plus-jakarta-sans: 'Plus Jakarta Sans', sans-serif;
   --background: 220 40% 6%;
   --foreground: 210 40% 96%;
   --foreground-primary: 210 40% 96%;
@@ -58,17 +56,31 @@ html, body {
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground-primary));
-  font-family: var(--font-inter);
+  font-family: var(--font-plus-jakarta-sans);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-space-grotesk);
+  font-family: var(--font-plus-jakarta-sans);
   color: hsl(210 40% 96%);
+  font-weight: 800;
+}
+
+h2, h3, h4 {
   font-weight: 700;
 }
 
 p, span, li, label {
   color: hsl(210 40% 96%);
+  font-weight: 400;
+}
+
+button {
+  font-weight: 600;
+}
+
+.hero-highlight {
+  color: #E6B54A;
+  font: inherit;
 }
 
 .text-primary {

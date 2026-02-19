@@ -1,12 +1,11 @@
 import React from "react"
 import type { Metadata } from 'next'
 import Script from 'next/script'
-import { Inter, Space_Grotesk } from 'next/font/google'
+import { Plus_Jakarta_Sans } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const inter = Inter({ subsets: ["latin"], variable: '--font-inter' })
-const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: '--font-space-grotesk' })
+const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ["latin"], variable: '--font-plus-jakarta-sans' })
 
 export const metadata: Metadata = {
   title: 'Visão Real | Descubra o que está impedindo seu negócio de crescer',
@@ -14,15 +13,9 @@ export const metadata: Metadata = {
   generator: 'v0.app',
   icons: {
     icon: [
-      {
-        url: '/icon0.svg',
-        type: 'image/svg+xml',
-      },
-      {
-        url: '/icon1.png',
-        sizes: '32x32',
-        type: 'image/png',
-      },
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon.png', type: 'image/png' },
+      { url: '/icon0.svg', type: 'image/svg+xml' },
     ],
     apple: '/apple-icon.png',
   },
@@ -34,7 +27,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/icon1.png',
+        url: '/icon0.svg',
         width: 32,
         height: 32,
         alt: 'Visão Real Logo',
@@ -51,13 +44,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="icon" type="image/svg+xml" href="/icon0.svg" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/icon1.png" />
         <link rel="apple-touch-icon" href="/apple-icon.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#131625" />
       </head>
-      <body className={`${inter.variable} ${spaceGrotesk.variable} font-inter antialiased w-full h-screen overflow-x-hidden bg-[#091019] text-foreground`}>
+      <body className={`${plusJakartaSans.variable} font-plus-jakarta-sans antialiased w-full min-h-screen overflow-x-hidden bg-[#091019] text-foreground`}>
         {children}
         <Analytics />
         <Script
