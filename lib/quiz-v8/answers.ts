@@ -83,7 +83,7 @@ export const PERGUNTAS_V8: Record<number, Pergunta> = {
     pergunta: 'Como você avalia sua clareza sobre o caminho à frente?',
     descricao: 'Sua visão e estratégia são importantes.',
     opcoes: [
-      { valor: 1, texto: 'Sem rumo claro, apenas reativo' },
+      { valor: 1, texto: 'Sem rumo claro, ainda tentando entender' },
       { valor: 2, texto: 'Tenho dúvidas sobre o melhor caminho' },
       { valor: 3, texto: 'Sei o que preciso fazer' },
       { valor: 4, texto: 'Tenho um plano claro e estruturado' },

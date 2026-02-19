@@ -1,129 +1,154 @@
+export type Trilha = 'IDEIA' | 'VALIDACAO' | 'PEQUENO' | 'ESTRUTURADA'
+
 export const DIAGNOSTICOS = {
   IDEIA: {
     1: {
-      frase: "Sua ideia está em fase inicial e precisa de validação clara.",
-      resumo: "Você tem uma ideia promissora, mas ainda faltam validações práticas. O foco agora é testar se o mercado realmente quer o que você está propondo.",
+      frase: "Sua ideia está em estágio inicial e ainda não foi validada com dados reais.",
+      resumo: "Existe uma hipótese de negócio, mas ainda não há evidência concreta de demanda. O objetivo agora é confirmar se existe um problema real e se pessoas estão dispostas a pagar por uma solução.",
       plano: {
-        autoridade: "Comece a criar presença onde seu público está. Não precisa ser perfeito, apenas autêntico e consistente.",
-        clareza: "Defina exatamente qual problema você resolve e para quem. Isso vai guiar todas as próximas decisões.",
-        capital: "Identifique o mínimo que você precisa gastar para testar sua ideia. Não invista muito antes de validar.",
-        estrategia: "Fale com 20 pessoas do seu público-alvo e anote o que elas dizem. Isso é mais valioso que qualquer pesquisa."
+        autoridade: "Conversar diretamente com potenciais clientes para entender se o problema realmente existe e é relevante. Registrar padrões de resposta para construir base mínima de legitimidade.",
+        clareza: "Em 7 dias: definir um único problema específico e um único perfil de cliente. Em 30 dias: conversar com pelo menos 15 pessoas desse perfil. Métrica: número de confirmações reais do problema.",
+        execucao: "Criar roteiro simples de validação e registrar 100% das conversas. Evitar conversas improvisadas sem documentação.",
+        estrategia: "Abordagem individual e direta, sem anúncios pagos. Validar interesse real antes de estruturar oferta formal.",
+        capital: "Limitar investimento apenas a ferramentas gratuitas ou já disponíveis. Não investir antes de validar o problema."
       }
     },
+
     2: {
-      frase: "Sua ideia tem potencial, mas você ainda está descobrindo o caminho.",
-      resumo: "Você começou a testar, e alguns sinais são positivos. Agora é hora de entender melhor o que funciona e escalar isso.",
+      frase: "Sua ideia já foi testada informalmente, mas o modelo de receita ainda não está comprovado.",
+      resumo: "Existe sinal inicial de interesse, porém ainda não há consistência em vendas ou clareza sobre o modelo de geração de receita. O objetivo agora é transformar testes em vendas reais e repetíveis.",
       plano: {
-        autoridade: "Compartilhe o que você está aprendendo. Contar sua jornada atrai pessoas que querem ajudar ou comprar.",
-        clareza: "Você sabe o que faz? Ótimo. Agora deixe isso absolutamente claro em tudo que você comunica.",
-        capital: "Calcule quanto você precisa gastar por mês para manter os testes. Crie um pequeno orçamento e respeite.",
-        estrategia: "Escolha um único canal para alcançar seu público e domine ele antes de expandir."
+        autoridade: "Utilizar primeiros resultados ou feedbacks positivos como prova inicial ao abordar novos clientes. Começar a estruturar pequenos cases.",
+        clareza: "Definir um único canal prioritário de aquisição e uma proposta clara para os próximos 30 dias. Métrica: taxa mínima de conversão definida previamente.",
+        execucao: "Documentar passo a passo da oferta e da entrega. Medir tempo, custo e esforço envolvidos em cada venda.",
+        estrategia: "Padronizar abordagem comercial e transformar teste em venda real. Focar em repetibilidade, não em volume.",
+        capital: "Crescer apenas com a receita gerada. Manter margem positiva em todas as vendas realizadas."
       }
     },
+
     3: {
-      frase: "Sua ideia está validada e pronta para crescer.",
-      resumo: "Você provou que seu produto ou serviço funciona. Agora o desafio é crescer de forma organizada e rentável.",
+      frase: "Sua ideia já gera receita recorrente e precisa de estrutura para crescimento.",
+      resumo: "A demanda está comprovada e clientes pagam regularmente. O foco agora é organizar processos, estabilizar margens e preparar expansão sustentável.",
       plano: {
-        autoridade: "Você já é uma referência no seu nicho. Aprofunde isso oferecendo conteúdo de valor regularmente.",
-        clareza: "Sua estratégia de longo prazo já está clara. Mantenha o foco nela, mesmo com pressões para mudar.",
-        capital: "Com validação confirmada, você tem base para investir em crescimento. Faça isso de forma calculada.",
-        estrategia: "Amplify o que funciona. Se uma estratégia trouxe resultados, escale ela antes de testar coisas novas."
+        autoridade: "Organizar e divulgar resultados já obtidos. Transformar clientes satisfeitos em provas sociais estruturadas.",
+        clareza: "Identificar os 3 principais gargalos de crescimento. Escolher um foco prioritário para os próximos 30 dias.",
+        execucao: "Criar processo padronizado para venda, entrega e suporte. Reduzir dependência de improviso operacional.",
+        estrategia: "Escolher uma única estratégia de aquisição escalável e executá-la com consistência por 30 dias.",
+        capital: "Reinvestir percentual fixo do lucro em crescimento. Definir política clara de reinvestimento."
       }
     }
   },
+
   VALIDACAO: {
     1: {
-      frase: "Você está no caminho certo, mas ainda há muitos sinais de interrogação.",
-      resumo: "Seu negócio mostrou que pode funcionar, mas ainda há riscos. O foco agora é eliminar as maiores incertezas antes de expandir.",
+      frase: "Você já tem clientes pagantes, mas a receita ainda é instável e dependente de esforço constante.",
+      resumo: "O modelo funciona, porém não é previsível. Há variação na entrada de clientes, na receita mensal e nos processos de entrega. O objetivo agora é estabilizar base e reduzir incerteza.",
       plano: {
-        autoridade: "Construa uma base de clientes que confiam em você. Cada cliente satisfeito é uma referência.",
-        clareza: "Documente como você atende clientes. Isso te ajuda a escalar sem perder qualidade.",
-        capital: "Você já gera receita, mas ela é instável. Crie um fundo de reserva para os meses mais baixos.",
-        estrategia: "Identifique o tipo de cliente mais fácil de conquistar. Domine esse segmento antes de expandir para outros."
+        autoridade: "Organizar depoimentos e resultados iniciais para fortalecer credibilidade no segmento atual.",
+        clareza: "Definir com precisão o perfil de cliente ideal com pelo menos 5 critérios objetivos. Escolher foco prioritário de atuação para os próximos 30 dias.",
+        execucao: "Padronizar processo de entrega com checklist formal. Reduzir retrabalho e variações na execução.",
+        estrategia: "Formalizar pedido de indicação ao final de cada entrega. Concentrar aquisição no perfil mais rentável identificado.",
+        capital: "Reservar percentual fixo da receita mensal para fundo de segurança. Meta: construir reserva mínima equivalente a 3 meses de custo fixo."
       }
     },
+
     2: {
-      frase: "Você está em um bom ritmo, mas precisa consolidar o que funciona.",
-      resumo: "Seu negócio tem receita consistente e clientes satisfeitos. Agora é hora de fortalecer a operação e preparar para crescimento.",
+      frase: "Seu negócio apresenta estabilidade inicial, mas depende excessivamente da sua presença direta.",
+      resumo: "Existe receita previsível e clientes recorrentes, porém a operação ainda é centralizada. O risco está na sobrecarga e na limitação de crescimento.",
       plano: {
-        autoridade: "Seu nome já significa qualidade. Mantenha e reforce essa reputação a cada interação.",
-        clareza: "Sua estrutura está funcionando? Documente tudo. Isso permite delegar e crescer.",
-        capital: "Com receita estável, invista em processos que economizem tempo. Seu tempo é seu maior recurso.",
-        estrategia: "Você já conhece bem seu cliente. Use esse conhecimento para vender mais para os que você já tem."
+        autoridade: "Estruturar portfólio de provas sociais (cases, depoimentos, resultados mensuráveis).",
+        clareza: "Mapear todas as atividades executadas pelo fundador e definir quais são estratégicas e quais são operacionais.",
+        execucao: "Delegar ou automatizar pelo menos 20% das tarefas operacionais nos próximos 30 dias. Criar manual básico para funções repetitivas.",
+        estrategia: "Ajustar posicionamento comercial para aumentar taxa de conversão com base nas provas sociais estruturadas.",
+        capital: "Garantir margem operacional mínima definida previamente. Ajustar preços ou custos caso esteja abaixo da meta."
       }
     },
+
     3: {
-      frase: "Você consolidou um negócio sólido e está pronto para o próximo nível.",
-      resumo: "Sua receita é previsível, seus processos funcionam e você tem clientela leal. Está na hora de escalar com confiança.",
+      frase: "Seu modelo é previsível e sustentável. O próximo passo é expansão estruturada.",
+      resumo: "Clientes recorrentes, receita estável e operação funcional indicam maturidade. O foco agora é decidir direção estratégica e preparar crescimento controlado.",
       plano: {
-        autoridade: "Você é reconhecido no seu mercado. Use isso para abrir novas portas e parcerias.",
-        clareza: "Sua visão de crescimento está clara e comprovada. Execute com segurança.",
-        capital: "Você tem fluxo de caixa saudável. Invista em ferramentas e pessoas que acelerem crescimento.",
-        estrategia: "Comece a explorar novos mercados ou segmentos de clientes. Você já tem a base sólida."
+        autoridade: "Fortalecer posicionamento institucional e consolidar reputação no mercado atual.",
+        clareza: "Definir qual será a principal direção de crescimento: expansão de mercado, ampliação de portfólio ou aumento de escala no mercado atual.",
+        execucao: "Preparar estrutura para suportar aumento de 50% na demanda sem perda de qualidade.",
+        estrategia: "Investir em canal previsível de aquisição com monitoramento claro de custo por cliente.",
+        capital: "Avaliar necessidade de capital externo apenas após validar crescimento interno consistente."
       }
     }
   },
+
   PEQUENO: {
     1: {
-      frase: "Seu negócio está funcionando, mas depende demais de você.",
-      resumo: "Você está gerando receita, mas tudo passa por suas mãos. O maior risco é você se queimar. É hora de pensar em processos.",
+      frase: "Seu negócio funciona, mas depende excessivamente da sua execução direta.",
+      resumo: "Existe geração de receita, porém você é o centro da operação. O crescimento está limitado pela sua disponibilidade e pela ausência de estrutura formal.",
       plano: {
-        receita: "Não suba os preços ainda. Aumente a quantidade de clientes com o mesmo esforço. Depois você aumenta margem.",
-        autoridade: "Comece a delegar pequenas coisas. Isso libera seu tempo para atividades mais estratégicas.",
-        capital: "Você não tem reserva? Crie uma. Guarde 20% do que ganhar. Isso te dá segurança para crescer.",
-        estrategia: "Escolha apenas atividades que geram receita. Elimine tudo o resto ou delegue."
+        autoridade: "Deixar claro seu diferencial competitivo e formalizar posicionamento para fortalecer percepção de valor.",
+        clareza: "Listar todas as atividades que você executa e identificar as 3 que podem ser delegadas nos próximos 30 dias.",
+        execucao: "Documentar processos principais de venda e entrega. Criar checklist simples para cada etapa.",
+        estrategia: "Focar em aumentar base de clientes mantendo padrão atual antes de expandir portfólio.",
+        capital: "Construir reserva financeira mínima equivalente a 3 meses de custo fixo pessoal e empresarial."
       }
     },
+
     2: {
-      frase: "Seu negócio está em um patamar interessante, mas precisa evoluir.",
-      resumo: "Você tem clientes, receita consistente e alguns processos. Agora é hora de escalar esses processos e criar alavancas.",
+      frase: "Seu negócio já apresenta organização básica, mas precisa evoluir eficiência operacional.",
+      resumo: "Existe receita consistente e algum nível de estrutura. O ponto crítico agora é aumentar eficiência e reduzir dependência manual para liberar capacidade estratégica.",
       plano: {
-        receita: "Seus clientes atuais são seu melhor marketing. Invista em mantê-los felizes e eles vão trazer mais.",
-        autoridade: "Seu nome começou a significar algo. Proteja e aumente essa reputação.",
-        capital: "Você está reinvestindo na operação? Ótimo. Continue, mas com sabedoria. Não gaste sem retorno claro.",
-        estrategia: "Documente seus melhores processos. Isso permite treinar outras pessoas e crescer sem você fazer tudo."
+        autoridade: "Consolidar marca com comunicação consistente e provas sociais organizadas.",
+        clareza: "Definir meta objetiva de crescimento para os próximos 12 meses com indicador mensurável.",
+        execucao: "Automatizar tarefas repetitivas e padronizar atendimento e entrega.",
+        estrategia: "Aumentar receita por cliente através de ofertas complementares ou ajustes de preço.",
+        capital: "Investir apenas em ferramentas que gerem retorno claro em até 90 dias."
       }
     },
+
     3: {
-      frase: "Seu negócio pequeno está bem estabelecido e pronto para expansão.",
-      resumo: "Você provou o modelo, tem processos, clientes satisfeitos e receita saudável. Agora expanda com confiança.",
+      frase: "Seu negócio está estruturado e pronto para crescimento planejado.",
+      resumo: "A operação funciona, há previsibilidade e margem saudável. O foco agora é escolher direção estratégica e preparar expansão sem comprometer qualidade.",
       plano: {
-        receita: "Com a operação funcionando bem, comece a investir em crescimento agressivo.",
-        autoridade: "Você é conhecido e confiável no seu nicho. Use isso para expandir para novos públicos.",
-        capital: "Fluxo de caixa está saudável. Invista em ferramentas, equipe e marketing para acelerar crescimento.",
-        estrategia: "Você pode agora criar novos produtos ou serviços para seus clientes existentes. Isso multiplica receita."
+        autoridade: "Fortalecer posicionamento institucional para atrair parceiros e talentos.",
+        clareza: "Definir plano estratégico de crescimento para os próximos 24 meses com metas claras.",
+        execucao: "Delegar funções operacionais e concentrar liderança em estratégia e crescimento.",
+        estrategia: "Escolher modelo principal de expansão: novo mercado, novo produto ou aumento de preço.",
+        capital: "Reinvestir percentual fixo do lucro em crescimento mantendo margem mínima definida."
       }
     }
   },
+
   ESTRUTURADA: {
     1: {
-      frase: "Sua empresa está estruturada, mas há gargalos internos que precisam ser resolvidos.",
-      resumo: "Você tem infraestrutura, processos e equipe. Mas algo está desorganizado ou ineficiente. Identificar e resolver isso vai liberar potencial escondido.",
+      frase: "Sua empresa possui estrutura formal, mas apresenta ineficiências internas.",
+      resumo: "Há equipe, processos e receita consolidada, porém existem falhas operacionais ou baixa margem que reduzem potencial de crescimento.",
       plano: {
-        receita: "Sua receita está boa, mas não é proporcional à estrutura que você tem. Reavaliar processos vai melhorar rentabilidade.",
-        autoridade: "Sua marca está estabelecida. Mantenha consistência e qualidade em tudo.",
-        organizacao: "Aqui está o problema. Mapeie todos os processos. Elimine redundâncias. Defina responsabilidades claras.",
-        estrategia: "Com processos otimizados, sua empresa vai gerar muito mais com a mesma estrutura."
+        autoridade: "Manter consistência institucional e reforçar reputação no mercado atual.",
+        clareza: "Auditar áreas críticas e definir um único foco prioritário de melhoria para os próximos 30 dias.",
+        execucao: "Mapear processos ponta a ponta e eliminar redundâncias e retrabalho.",
+        estrategia: "Revisar precificação e canais de aquisição para aumentar margem.",
+        capital: "Cortar investimentos com retorno indefinido e priorizar ações com impacto financeiro mensurável."
       }
     },
+
     2: {
-      frase: "Sua empresa está bem organizada, mas pode otimizar ainda mais.",
-      resumo: "Você tem tudo funcionando bem: processos, equipe engajada, receita previsível. Agora é hora de aperfeiçoar e maximizar eficiência.",
+      frase: "Sua empresa é organizada e eficiente, mas pode ampliar resultado com ajustes estratégicos.",
+      resumo: "Processos funcionam e há estabilidade financeira. O próximo passo é otimizar rentabilidade e preparar alavancas de crescimento.",
       plano: {
-        receita: "Com operação eficiente, aumente a agressividade em vendas e marketing. O lucro vai crescer proporcionalmente.",
-        autoridade: "Sua reputação está sólida. Invista em marca e posicionamento estratégico.",
-        organizacao: "Seus processos funcionam. Agora automatize o máximo possível. Isso reduz custos e melhora velocidade.",
-        estrategia: "Com eficiência comprovada, explore novos produtos, serviços ou mercados."
+        autoridade: "Fortalecer posicionamento institucional para consolidar liderança no nicho.",
+        clareza: "Definir vetor prioritário de crescimento para os próximos 24 meses.",
+        execucao: "Automatizar processos administrativos e liberar equipe para atividades de receita.",
+        estrategia: "Testar aumento controlado de preço ou expansão de oferta para clientes existentes.",
+        capital: "Revisar estrutura de custos e melhorar retorno sobre investimento por projeto."
       }
     },
+
     3: {
-      frase: "Sua empresa está altamente estruturada e preparada para crescimento acelerado.",
-      resumo: "Você tem processos otimizados, equipe alinhada, e operação eficiente. Você está preparado para dar grandes passos.",
+      frase: "Sua empresa está otimizada e preparada para expansão estratégica relevante.",
+      resumo: "Existe eficiência operacional, previsibilidade financeira e reputação consolidada. O foco agora é escalar com disciplina e controle.",
       plano: {
-        receita: "Escale agressivamente. Sua operação aguenta crescimento rápido. Invista em captação de clientes.",
-        autoridade: "Você é uma empresa estabelecida e confiável. Use isso para parcerias estratégicas e expansão.",
-        organizacao: "Sua estrutura está pronta. Agora é escala. Contrate, invista e expanda.",
-        estrategia: "Você pode competir em escala. Considere fusões, aquisições ou expansão geográfica."
+        autoridade: "Usar reputação consolidada para firmar parcerias estratégicas e ampliar presença institucional.",
+        clareza: "Definir plano estratégico de 24–36 meses com metas de expansão claras.",
+        execucao: "Preparar estrutura para suportar crescimento de 2x sem perda de qualidade.",
+        estrategia: "Escalar investimento em aquisição de clientes com monitoramento rigoroso de custo e retorno.",
+        capital: "Avaliar capital externo apenas se acelerar crescimento com retorno previsível."
       }
     }
   }
