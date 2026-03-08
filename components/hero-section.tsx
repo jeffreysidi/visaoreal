@@ -34,17 +34,17 @@ export function HeroSection() {
           <section className="space-y-6">
             <div className="space-y-4">
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-foreground leading-[1.045] text-balance max-w-full lg:max-w-[70%]" style={{ letterSpacing: '-0.02em' }}>
-                Descubra a <span className="hero-highlight">direção</span> certa para o seu negócio.
+                Descubra o <span className="hero-highlight">ponto crítico</span> do seu negócio.
               </h1>
               
               {/* Subtítulo Principal (Autoridade) */}
               <p className="text-base sm:text-lg text-foreground/85 leading-relaxed max-w-full lg:max-w-[75%] text-balance mt-4" style={{ fontSize: '0.92rem', lineHeight: '1.59' }}>
-                Receba uma análise estruturada que identifica o ponto mais relevante do seu negócio e indica o próximo passo com clareza.
+                O Visão Real analisa seu negócio e identifica o estágio do projeto, o tipo estrutural do modelo e o principal ponto crítico que exige decisão agora.
               </p>
               
               {/* Linha Adicional (Velocidade) - 10% menor, opacidade 85% */}
               <p className="text-sm sm:text-base text-foreground/80 leading-relaxed max-w-full lg:max-w-[75%] text-balance mt-3" style={{ fontSize: '0.828rem', lineHeight: '1.47' }}>
-                Em 3 minutos você entende o principal ponto crítico — e sabe exatamente por onde começar.
+                Em poucos minutos você recebe um diagnóstico inicial que mostra onde concentrar sua atenção e qual é o próximo passo mais racional para o seu negócio.
               </p>
             </div>
             
@@ -57,8 +57,9 @@ export function HeroSection() {
                 style={{ 
                   backgroundColor: '#E6B54A', 
                   borderColor: '#E6B54A',
-                  paddingLeft: 'calc(2.5rem - 6%)',
-                  paddingRight: 'calc(2.5rem - 6%)',
+                  paddingLeft: 'calc(1.5rem)',
+                  paddingRight: 'calc(1.5rem)',
+                  maxWidth: '280px',
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = '#D9A843'
@@ -67,7 +68,7 @@ export function HeroSection() {
                   e.currentTarget.style.backgroundColor = '#E6B54A'
                 }}
               >
-                Iniciar diagnóstico gratuito
+                Iniciar diagnóstico
               </Button>
             </div>
             

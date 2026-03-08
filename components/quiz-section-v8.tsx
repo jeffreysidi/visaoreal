@@ -229,15 +229,15 @@ export function QuizSectionV8() {
 
                   return (
                     <>
-                      {/* Frase Forte */}
-                      <div className="space-y-3 border-b border-border/50 pb-8 mb-4">
-                        <h3 className="text-2xl font-bold text-foreground leading-relaxed">
+                      {/* Frase Forte - DESTACADA */}
+                      <div className="space-y-4 border-b border-border/50 pb-10 mb-8">
+                        <h3 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight text-center tracking-tight">
                           {textos.frase}
                         </h3>
                       </div>
 
                       {/* Resumo */}
-                      <div className="space-y-3 border-b border-border/50 pb-6 mb-4 mt-6 mb-6">
+                      <div className="space-y-4 border-b border-border/50 pb-8 mb-10 mt-8">
                         <h4 className="text-sm font-semibold text-foreground uppercase tracking-wide">
                           Resumo do seu momento atual
                         </h4>
@@ -247,63 +247,63 @@ export function QuizSectionV8() {
                       </div>
 
                       {/* Como chegamos a esse diagnóstico - Glass Card Style */}
-                      <div className="space-y-4 border-b border-border/50 pb-8 mb-4">
+                      <div className="space-y-6 border-b border-border/50 pb-10 mb-10">
                         <h4 className="text-sm font-semibold text-foreground uppercase tracking-wide">
                           Como chegamos a esse diagnóstico
                         </h4>
-                        <div className="backdrop-blur-sm bg-blue-500/5 rounded-lg p-6 space-y-0 border border-border shadow-sm">
+                        <div className="backdrop-blur-sm bg-blue-500/5 rounded-lg p-8 space-y-0 border border-border shadow-sm">
                           {/* Estágio atual e desenvolvimento - lado a lado em desktop */}
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="space-y-1 mt-4 mb-2">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="space-y-2 mt-5 mb-3">
                               <span className="text-xs font-medium text-blue-accent uppercase tracking-wide opacity-90">Estágio atual</span>
-                              <p className="text-lg font-semibold text-foreground">{getTrilhaHumano(diagnostico.trilha)}</p>
+                              <p className="text-lg font-bold text-foreground">{getTrilhaHumano(diagnostico.trilha)}</p>
                             </div>
-                            <div className="space-y-1 mt-4 mb-2">
+                            <div className="space-y-2 mt-5 mb-3">
                               <span className="text-xs font-medium text-blue-accent uppercase tracking-wide opacity-90">Nível de maturidade</span>
-                              <p className="text-lg font-semibold text-foreground">{getNivelHumano(diagnostico.nivel)}</p>
+                              <p className="text-lg font-bold text-foreground">{getNivelHumano(diagnostico.nivel)}</p>
                             </div>
                           </div>
                           
                           {/* Divisor */}
-                          <div className="border-t border-border/40 my-4" />
+                          <div className="border-t border-border/40 my-6" />
                           
                           {/* Análise por áreas - Grid 2x3 */}
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                            <div className="space-y-1 mt-4 mb-2">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="space-y-2 mt-5 mb-3">
                               <span className="text-xs font-medium text-blue-accent uppercase tracking-wide opacity-90">Maturidade</span>
-                              <p className="text-lg font-semibold text-foreground">{getOpcaoTexto(1, answers.p1)}</p>
+                              <p className="text-lg font-bold text-foreground">{getOpcaoTexto(1, answers.p1)}</p>
                             </div>
-                            <div className="space-y-1 mt-4 mb-2">
+                            <div className="space-y-2 mt-5 mb-3">
                               <span className="text-xs font-medium text-blue-accent uppercase tracking-wide opacity-90">Receita</span>
-                              <p className="text-lg font-semibold text-foreground">{getOpcaoTexto(2, answers.p2)}</p>
+                              <p className="text-lg font-bold text-foreground">{getOpcaoTexto(2, answers.p2)}</p>
                             </div>
-                            <div className="space-y-1 mt-4 mb-2">
+                            <div className="space-y-2 mt-5 mb-3">
                               <span className="text-xs font-medium text-blue-accent uppercase tracking-wide opacity-90">Principal dificuldade</span>
-                              <p className="text-lg font-semibold text-foreground">{getOpcaoTexto(3, answers.p3)}</p>
+                              <p className="text-lg font-bold text-foreground">{getOpcaoTexto(3, answers.p3)}</p>
                             </div>
-                            <div className="space-y-1 mt-4 mb-2">
+                            <div className="space-y-2 mt-5 mb-3">
                               <span className="text-xs font-medium text-blue-accent uppercase tracking-wide opacity-90">Autoridade</span>
-                              <p className="text-lg font-semibold text-foreground">{getOpcaoTexto(4, answers.p4)}</p>
+                              <p className="text-lg font-bold text-foreground">{getOpcaoTexto(4, answers.p4)}</p>
                             </div>
-                            <div className="space-y-1 mt-4 mb-2">
+                            <div className="space-y-2 mt-5 mb-3">
                               <span className="text-xs font-medium text-blue-accent uppercase tracking-wide opacity-90">Capital</span>
-                              <p className="text-lg font-semibold text-foreground">{getOpcaoTexto(5, answers.p5)}</p>
+                              <p className="text-lg font-bold text-foreground">{getOpcaoTexto(5, answers.p5)}</p>
                             </div>
-                            <div className="space-y-1 mt-4 mb-2">
+                            <div className="space-y-2 mt-5 mb-3">
                               <span className="text-xs font-medium text-blue-accent uppercase tracking-wide opacity-90">Clareza</span>
-                              <p className="text-lg font-semibold text-foreground">{getOpcaoTexto(7, answers.p7)}</p>
+                              <p className="text-lg font-bold text-foreground">{getOpcaoTexto(7, answers.p7)}</p>
                             </div>
                           </div>
                         </div>
                       </div>
 
                       {/* Plano dividido por áreas - Glass Cards */}
-                      <div className="space-y-6 pt-4">
+                      <div className="space-y-6 pt-6">
                         <h4 className="text-sm font-semibold text-foreground uppercase tracking-wide">
                           O que fazer agora
                         </h4>
                         {textos.plano && (
-                          <div className="space-y-4">
+                          <div className="space-y-5">
                             {Object.entries(textos.plano).map(([area, descricao]) => {
                               const labelMap: Record<string, string> = {
                                 autoridade: 'Autoridade',
@@ -314,11 +314,11 @@ export function QuizSectionV8() {
                               }
                               const label = labelMap[area] || area
                               return (
-                                <div key={area} className="backdrop-blur-sm bg-blue-500/5 border border-border rounded-lg p-4 space-y-2 shadow-sm">
-                                  <h5 className="font-semibold text-foreground text-base">
+                                <div key={area} className="backdrop-blur-sm bg-blue-500/5 border border-border rounded-lg p-6 space-y-3 shadow-sm">
+                                  <h5 className="font-bold text-foreground text-lg">
                                     {label}
                                   </h5>
-                                  <p className="text-foreground text-sm leading-relaxed">
+                                  <p className="text-foreground text-base leading-relaxed">
                                     {descricao}
                                   </p>
                                 </div>
@@ -331,13 +331,89 @@ export function QuizSectionV8() {
                   )
                 })()}
 
-                {/* Botões */}
-                <div className="flex flex-col gap-4 pt-6 border-t border-border">
-                  <Link href="/relatorio-estrategico" className="w-full">
-                    <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-6 text-base rounded-lg">
-                      Quero meu Diagnóstico Completo
+                {/* NOVO BLOCO: Aprofunde o diagnóstico */}
+                <div className="bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-300 rounded-lg px-8 py-8 md:px-10 md:py-10 space-y-6 mt-12">
+                  <h3 className="text-2xl md:text-3xl font-bold tracking-wide" style={{ color: '#0F2E5A' }}>
+                    Aprofunde o diagnóstico do seu negócio
+                  </h3>
+                  
+                  <p className="text-base md:text-lg leading-relaxed font-medium" style={{ color: '#0F2E5A' }}>
+                    O resultado acima mostra o enquadramento inicial do seu projeto com base nas respostas fornecidas.
+                  </p>
+
+                  <p className="text-base md:text-lg leading-relaxed" style={{ color: '#0F2E5A' }}>
+                    Para aprofundar a análise estratégica do seu negócio, é possível solicitar um diagnóstico ampliado, utilizando informações adicionais sobre o seu projeto.
+                  </p>
+
+                  <div className="border-t border-amber-200 pt-4">
+                    <h4 className="text-sm font-bold tracking-wide uppercase mb-4 flex items-center gap-2" style={{ color: '#0F2E5A' }}>
+                      <span className="h-2 w-2 rounded-full bg-amber-600" />
+                      O diagnóstico ampliado inclui:
+                    </h4>
+
+                    <ul className="space-y-3">
+                      <li className="text-xs md:text-sm leading-relaxed flex gap-3 items-start font-semibold" style={{ color: '#0F2E5A' }}>
+                        <span className="inline-flex items-center justify-center h-5 w-5 rounded-full bg-amber-600 flex-shrink-0 mt-0.5">
+                          <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </span>
+                        <span style={{ color: '#0F2E5A' }}>análise estratégica da situação atual do negócio</span>
+                      </li>
+                      <li className="text-xs md:text-sm leading-relaxed flex gap-3 items-start font-semibold" style={{ color: '#0F2E5A' }}>
+                        <span className="inline-flex items-center justify-center h-5 w-5 rounded-full bg-amber-600 flex-shrink-0 mt-0.5">
+                          <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </span>
+                        <span style={{ color: '#0F2E5A' }}>identificação dos principais riscos estruturais do modelo</span>
+                      </li>
+                      <li className="text-xs md:text-sm leading-relaxed flex gap-3 items-start font-semibold" style={{ color: '#0F2E5A' }}>
+                        <span className="inline-flex items-center justify-center h-5 w-5 rounded-full bg-amber-600 flex-shrink-0 mt-0.5">
+                          <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </span>
+                        <span style={{ color: '#0F2E5A' }}>interpretação do padrão de decisão do projeto</span>
+                      </li>
+                      <li className="text-xs md:text-sm leading-relaxed flex gap-3 items-start font-semibold" style={{ color: '#0F2E5A' }}>
+                        <span className="inline-flex items-center justify-center h-5 w-5 rounded-full bg-amber-600 flex-shrink-0 mt-0.5">
+                          <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </span>
+                        <span style={{ color: '#0F2E5A' }}>leitura do estágio real de maturidade do negócio</span>
+                      </li>
+                      <li className="text-xs md:text-sm leading-relaxed flex gap-3 items-start font-semibold" style={{ color: '#0F2E5A' }}>
+                        <span className="inline-flex items-center justify-center h-5 w-5 rounded-full bg-amber-600 flex-shrink-0 mt-0.5">
+                          <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </span>
+                        <span style={{ color: '#0F2E5A' }}>direcionamento sobre onde concentrar energia agora</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="border-t border-amber-200 pt-4 space-y-3">
+                    <p className="text-xs md:text-sm leading-relaxed" style={{ color: '#0F2E5A' }}>
+                      A análise também pode incluir referências e padrões observados em negócios similares, ajudando a contextualizar a situação do projeto dentro do mercado.
+                    </p>
+                    <p className="text-xs md:text-sm leading-relaxed font-medium" style={{ color: '#0F2E5A' }}>
+                      Essa análise permite entender não apenas o problema aparente, mas a estrutura real que está limitando o avanço do negócio.
+                    </p>
+                  </div>
+
+                  <Link href="/relatorio-estrategico" className="w-full block">
+                    <Button className="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold text-xs md:text-sm py-2 md:py-2.5 rounded-lg shadow-md hover:shadow-lg transition-all">
+                      Solicitar diagnóstico ampliado
                     </Button>
                   </Link>
+                </div>
+
+                {/* Divisor */}
+                <div className="border-t border-slate-200/40 mt-8" />
+                <div className="flex flex-col gap-4 pt-6">
                   <Button
                     onClick={handleReiniciar}
                     variant="outline"

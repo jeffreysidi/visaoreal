@@ -1,26 +1,36 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { ArrowLeft, Shield, Mail, MessageCircle } from 'lucide-react'
-import Script from 'next/script'
+import { ArrowLeft } from 'lucide-react'
 import Image from 'next/image'
 
 export default function RelatorioEstrategico() {
   const router = useRouter()
+  const [quizData, setQuizData] = useState<any>(null)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     window.scrollTo(0, 0)
+    
+    // Read quiz data from localStorage
+    if (typeof window !== 'undefined') {
+      const storedData = localStorage.getItem('quizData')
+      if (storedData) {
+        try {
+          const parsed = JSON.parse(storedData)
+          setQuizData(parsed)
+        } catch (e) {
+          console.error('[v0] Error parsing quiz data:', e)
+        }
+      }
+      setIsLoading(false)
+    }
   }, [])
 
   return (
     <main className="min-h-screen bg-background text-foreground">
-      <Script 
-        src="https://js.stripe.com/v3/buy-button.js"
-        strategy="afterInteractive"
-      />
-
       {/* HEADER - Logo */}
       <header className="bg-background border-b border-border px-4 py-6">
         <div className="flex justify-center max-w-7xl mx-auto">
@@ -40,48 +50,22 @@ export default function RelatorioEstrategico() {
         <div className="w-full max-w-4xl mx-auto space-y-16 sm:space-y-20">
 
           {/* SEÇÃO 1: HERO */}
-          <section className="space-y-6">
-            <div className="space-y-4">
+          <section className="space-y-3">
+            <div className="space-y-2">
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-foreground leading-[1.045] text-balance max-w-full lg:max-w-[70%]" style={{ letterSpacing: '-0.02em' }}>
                 Saiba qual <span className="hero-highlight">decisão</span> faz mais sentido para o seu negócio agora.
               </h1>
-              <p className="text-base sm:text-lg text-foreground/85 leading-relaxed max-w-full lg:max-w-[75%] text-balance mt-4" style={{ fontSize: '0.92rem', lineHeight: '1.59' }}>
+              <p className="text-base sm:text-lg text-foreground/85 leading-relaxed max-w-full lg:max-w-[75%] text-balance mt-2" style={{ fontSize: '0.92rem', lineHeight: '1.59' }}>
                 Um diagnóstico estratégico estruturado que identifica o ponto que precisa ser resolvido e indica o próximo passo racional.
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-3 pt-4 justify-start sm:justify-start">
-              <Button 
-                onClick={() => {
-                  const elemento = document.getElementById('bloco-pagamento')
-                  if (elemento) {
-                    elemento.scrollIntoView({ behavior: 'smooth', block: 'center' })
-                  }
-                }}
-                size="lg"
-                className="w-[92%] sm:w-auto text-base font-semibold h-14 rounded-[12px] text-[#0F2E5A] transition-all"
-                style={{ 
-                  backgroundColor: '#E6B54A', 
-                  borderColor: '#E6B54A',
-                  paddingLeft: 'calc(2.5rem - 6%)',
-                  paddingRight: 'calc(2.5rem - 6%)',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#D9A843'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = '#E6B54A'
-                }}
-              >
-                Quero receber meu Relatório Estratégico
-              </Button>
-            </div>
-            <p className="text-sm text-foreground/50 pt-2">
+            <p className="text-sm text-foreground/50">
               Entrega em até 24 horas após o formulário complementar.
             </p>
           </section>
 
           {/* SEÇÃO 2: O QUE VOCÊ RECEBE */}
-          <section className="space-y-[6.6rem] bg-background/50 rounded-lg p-8 sm:p-10 border border-border">
+          <section className="space-y-4 bg-background/50 rounded-lg p-6 sm:p-8 border border-border">
             <div>
               <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-3" style={{ fontSize: 'clamp(1.5rem, 5vw, 2.85rem)' }}>
                 O que você recebe
@@ -117,28 +101,28 @@ export default function RelatorioEstrategico() {
             </h2>
             <ul className="space-y-3">
               <li className="flex gap-4">
-                <div className="flex-shrink-0 w-1.5 h-1.5 bg-foreground/50 rounded-full mt-2"></div>
-                <span className="text-foreground/80">Clareza da proposta e posicionamento</span>
+                <div className="flex-shrink-0 w-1.5 h-1.5 bg-[#E6B54A] rounded-full mt-2"></div>
+                <span className="text-foreground/80">Clareza da proposta de valor</span>
               </li>
               <li className="flex gap-4">
-                <div className="flex-shrink-0 w-1.5 h-1.5 bg-foreground/50 rounded-full mt-2"></div>
+                <div className="flex-shrink-0 w-1.5 h-1.5 bg-[#E6B54A] rounded-full mt-2"></div>
                 <span className="text-foreground/80">Coerência entre produto, mercado e receita</span>
               </li>
               <li className="flex gap-4">
-                <div className="flex-shrink-0 w-1.5 h-1.5 bg-foreground/50 rounded-full mt-2"></div>
+                <div className="flex-shrink-0 w-1.5 h-1.5 bg-[#E6B54A] rounded-full mt-2"></div>
                 <span className="text-foreground/80">Estrutura de geração de valor</span>
               </li>
               <li className="flex gap-4">
-                <div className="flex-shrink-0 w-1.5 h-1.5 bg-foreground/50 rounded-full mt-2"></div>
+                <div className="flex-shrink-0 w-1.5 h-1.5 bg-[#E6B54A] rounded-full mt-2"></div>
                 <span className="text-foreground/80">Capacidade real de execução</span>
               </li>
               <li className="flex gap-4">
-                <div className="flex-shrink-0 w-1.5 h-1.5 bg-foreground/50 rounded-full mt-2"></div>
+                <div className="flex-shrink-0 w-1.5 h-1.5 bg-[#E6B54A] rounded-full mt-2"></div>
                 <span className="text-foreground/80">Riscos estruturais invisíveis</span>
               </li>
               <li className="flex gap-4">
-                <div className="flex-shrink-0 w-1.5 h-1.5 bg-foreground/50 rounded-full mt-2"></div>
-                <span className="text-foreground/80">Decisões tomadas fora de contexto estratégico</span>
+                <div className="flex-shrink-0 w-1.5 h-1.5 bg-[#E6B54A] rounded-full mt-2"></div>
+                <span className="text-foreground/80">Decisões tomadas fora do contexto estratégico</span>
               </li>
             </ul>
             <p className="text-foreground/70 pt-4 text-sm font-medium">
@@ -147,7 +131,7 @@ export default function RelatorioEstrategico() {
           </section>
 
           {/* SEÇÃO 4: COMO FUNCIONA */}
-          <section className="space-y-[6.6rem] bg-background/50 rounded-lg p-8 sm:p-10 border border-border">
+          <section className="space-y-4 bg-background/50 rounded-lg p-6 sm:p-8 border border-border">
             <h2 className="text-2xl sm:text-3xl font-bold text-foreground" style={{ fontSize: 'clamp(1.5rem, 5vw, 2.85rem)' }}>
               Como funciona
             </h2>
@@ -182,68 +166,217 @@ export default function RelatorioEstrategico() {
             </p>
           </section>
 
-          {/* SEÇÃO 5: GARANTIA */}
-          <section className="space-y-4 bg-background/80 rounded-lg p-8 sm:p-10 border-2 border-foreground/20">
-            <div className="flex items-start gap-3">
-              <Shield className="w-6 h-6 text-foreground flex-shrink-0 mt-0.5" />
-              <div className="space-y-3">
-                <h2 className="text-2xl font-bold text-foreground" style={{ fontSize: 'clamp(1.5rem, 5vw, 2.85rem)' }}>
-                  Garantia de Clareza
-                </h2>
-                <p className="text-foreground/80">
-                  Se o relatório não trouxer clareza real sobre qual decisão faz mais sentido para o seu negócio neste momento, basta solicitar reembolso em até 7 dias.
-                </p>
-                <p className="text-foreground/60 text-sm font-medium">
-                  Sem burocracia.
-                </p>
-              </div>
-            </div>
+          {/* SEÇÃO 5: TEXTO EXPLICATIVO PRÉ-FORMULÁRIO */}
+          <section className="rounded-lg p-8 sm:p-10 mt-20 sm:mt-24 border-2" style={{ backgroundColor: '#E6B54A', borderColor: '#D9A843' }}>
+            <p className="leading-relaxed font-semibold" style={{ color: '#0F2E5A' }}>
+              Para concluir o diagnóstico ampliado do seu negócio, precisamos de algumas informações adicionais sobre o contexto atual do projeto.
+            </p>
+            <p className="leading-relaxed font-semibold mt-4" style={{ color: '#0F2E5A' }}>
+              O preenchimento leva cerca de 2 minutos.
+            </p>
           </section>
 
-          {/* SEÇÃO 6: INVESTIMENTO + CTA */}
-          <section id="investimento" className="space-y-6 bg-background/50 rounded-lg p-8 sm:p-10 border border-border scroll-mt-20">
-            <div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4" style={{ fontSize: 'clamp(1.5rem, 5vw, 2.85rem)' }}>
-                Investimento
-              </h2>
-              <div className="mb-6">
-                <p className="text-5xl sm:text-6xl font-extrabold text-foreground mb-2" style={{ letterSpacing: '-0.01em', fontSize: 'clamp(2.8rem, 8vw, 5rem)' }}>
-                  R$ 297
-                </p>
-                <p className="text-foreground/75" style={{ lineHeight: '1.575' }}>
-                  Um investimento pequeno comparado ao custo de uma decisão errada.
+          {/* SEÇÃO 6: FORMULÁRIO */}
+          <section id="bloco-formulario" className="space-y-6 scroll-mt-20">
+            <form action="https://formspree.io/f/xnjzyaln" method="POST" className="space-y-6">
+              
+              {/* Hidden fields com dados do quiz */}
+              <input type="hidden" name="sessionId" value={quizData?.sessionId || ''} />
+              <input type="hidden" name="diagnostico_final" value={quizData?.diagnostico_final || ''} />
+              <input type="hidden" name="quiz_answers" value={JSON.stringify(quizData?.quiz_answers || {})} />
+              <input type="hidden" name="finished_at" value={quizData?.finished_at || ''} />
+              <input type="hidden" name="quiz_version" value={quizData?.quiz_version || ''} />
+
+              <h3 className="text-2xl font-bold text-slate-900">
+                Informações complementares para o diagnóstico ampliado
+              </h3>
+
+              <div className="space-y-6">
+                {/* Nome completo */}
+                <div className="space-y-2">
+                  <label htmlFor="nome" className="block text-sm font-medium text-slate-700">
+                    Nome completo
+                  </label>
+                  <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    placeholder="Seu nome"
+                  />
+                </div>
+
+                {/* E-mail */}
+                <div className="space-y-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-slate-700">
+                    E-mail <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    placeholder="seu@email.com"
+                  />
+                </div>
+
+                {/* WhatsApp */}
+                <div className="space-y-2">
+                  <label htmlFor="whatsapp" className="block text-sm font-medium text-slate-700">
+                    WhatsApp <span className="text-slate-500">(opcional)</span>
+                  </label>
+                  <input
+                    type="tel"
+                    id="whatsapp"
+                    name="whatsapp"
+                    className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    placeholder="+55 (11) 99999-9999"
+                  />
+                  <p className="text-xs text-slate-500">
+                    Caso precise esclarecer algum ponto do diagnóstico
+                  </p>
+                  <p className="text-xs text-slate-500 border-t border-slate-200 pt-2 mt-2">
+                    Ao informar seu WhatsApp, você concorda em ser contatado exclusivamente para esclarecimentos relacionados ao seu diagnóstico.
+                  </p>
+                </div>
+
+                {/* Nome do projeto ou negócio */}
+                <div className="space-y-2">
+                  <label htmlFor="projeto" className="block text-sm font-medium text-slate-700">
+                    Nome do projeto ou negócio
+                  </label>
+                  <input
+                    type="text"
+                    id="projeto"
+                    name="projeto"
+                    className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
+                    placeholder="Nome do seu projeto"
+                  />
+                </div>
+
+                {/* Tipo de negócio */}
+                <div className="space-y-2">
+                  <label htmlFor="tipoDist" className="block text-sm font-medium text-slate-700">
+                    Tipo de negócio
+                  </label>
+                  <select
+                    id="tipoDist"
+                    name="tipoDist"
+                    className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-white"
+                  >
+                    <option value="">Selecione uma opção</option>
+                    <option value="ideia">Ideia / Projeto inicial</option>
+                    <option value="digital">Negócio digital</option>
+                    <option value="servico">Serviço / Consultoria</option>
+                    <option value="local">Negócio local</option>
+                    <option value="produto">Produto físico</option>
+                  </select>
+                </div>
+
+                {/* Desafio principal */}
+                <div className="space-y-2">
+                  <label htmlFor="desafio" className="block text-sm font-medium text-slate-700">
+                    Em uma frase, qual é o principal desafio hoje?
+                  </label>
+                  <textarea
+                    id="desafio"
+                    name="desafio"
+                    className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
+                    rows={3}
+                    placeholder="Descreva brevemente..."
+                  />
+                </div>
+
+                {/* Tentativas anteriores */}
+                <div className="space-y-2">
+                  <label htmlFor="tentativas" className="block text-sm font-medium text-slate-700">
+                    O que você já tentou fazer para resolver isso e não funcionou?
+                  </label>
+                  <textarea
+                    id="tentativas"
+                    name="tentativas"
+                    className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
+                    rows={3}
+                    placeholder="Descreva o que tentou..."
+                  />
+                </div>
+
+                {/* Decisão adiada */}
+                <div className="space-y-2">
+                  <label htmlFor="decisao" className="block text-sm font-medium text-slate-700">
+                    Qual decisão você vem evitando ou adiando tomar?
+                  </label>
+                  <textarea
+                    id="decisao"
+                    name="decisao"
+                    className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
+                    rows={3}
+                    placeholder="Descreva a decisão..."
+                  />
+                </div>
+
+                {/* Risco crítico */}
+                <div className="space-y-2">
+                  <label htmlFor="risco" className="block text-sm font-medium text-slate-700">
+                    O que você NÃO pode se dar ao luxo de errar agora?
+                  </label>
+                  <textarea
+                    id="risco"
+                    name="risco"
+                    className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
+                    rows={3}
+                    placeholder="Descreva o risco crítico..."
+                  />
+                </div>
+
+                {/* Avanço esperado */}
+                <div className="space-y-2">
+                  <label htmlFor="avanço" className="block text-sm font-medium text-slate-700">
+                    Considerando os próximos 6–12 meses, o que seria um avanço "bom o suficiente" para você?
+                  </label>
+                  <textarea
+                    id="avanço"
+                    name="avanço"
+                    className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
+                    rows={3}
+                    placeholder="Descreva o avanço esperado..."
+                  />
+                </div>
+
+                {/* Informações adicionais */}
+                <div className="space-y-2">
+                  <label htmlFor="informacoes" className="block text-sm font-medium text-slate-700">
+                    Existe algo importante que não foi perguntado no diagnóstico ou neste formulário, mas que você acha que precisamos saber para analisar melhor?
+                  </label>
+                  <textarea
+                    id="informacoes"
+                    name="informacoes"
+                    className="w-full px-4 py-2.5 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none"
+                    rows={3}
+                    placeholder="Informações adicionais..."
+                  />
+                </div>
+              </div>
+
+              {/* Bloco informativo - Próximo passo */}
+              <div className="rounded-lg bg-blue-50/40 border border-blue-200/30 p-4 space-y-2">
+                <p className="text-sm font-semibold text-slate-900">Próximo passo</p>
+                <p className="text-sm text-slate-700 leading-relaxed">
+                  Após o envio das informações, nossa equipe iniciará a análise estratégica.
+                  <br />
+                  O Relatório Estratégico Completo será elaborado com base no seu diagnóstico e encaminhado por e-mail em até 24 horas.
                 </p>
               </div>
-            </div>
-            <div className="flex justify-center">
-              <Button 
-                onClick={() => {
-                  const elemento = document.getElementById('bloco-pagamento')
-                  if (elemento) {
-                    elemento.scrollIntoView({ behavior: 'smooth', block: 'center' })
-                  }
-                }}
-                size="lg"
-                className="w-[90%] sm:w-auto sm:max-w-[420px] text-[0.928rem] font-semibold h-12 rounded-[12px] text-white transition-all"
-                style={{ 
-                  backgroundColor: '#0EA5B7', 
-                  borderColor: '#0EA5B7',
-                  paddingLeft: '2rem',
-                  paddingRight: '2rem',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#0D94A3'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = '#0EA5B7'
-                }}
+
+              {/* Submit button */}
+              <button
+                type="submit"
+                className="w-full rounded-xl h-14 font-semibold text-base shadow-md hover:shadow-lg transition-all bg-blue-600 hover:bg-blue-700 text-white"
               >
-                Quero receber meu Relatório Estratégico
-              </Button>
-            </div>
-            <p className="text-sm text-foreground/50 text-center">
-              Você será direcionado para o pagamento seguro no Stripe.
-            </p>
+                Enviar informações e iniciar análise
+              </button>
+            </form>
           </section>
 
           {/* SEÇÃO 7: QUEM ANALISA */}
@@ -274,42 +407,6 @@ export default function RelatorioEstrategico() {
                   </p>
                 </div>
               </div>
-            </div>
-          </section>
-
-          {/* SEÇÃO 8: SUPORTE HUMANO */}
-          <section className="space-y-[6.6rem] bg-background/50 rounded-lg p-8 sm:p-10 border border-border">
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground" style={{ fontSize: 'clamp(1.5rem, 5vw, 2.85rem)' }}>
-              Suporte humano
-            </h2>
-            <p className="text-foreground/80 mb-4">
-              Após o envio do relatório, você poderá:
-            </p>
-            <ul className="space-y-4">
-              <li className="flex gap-4">
-                <Mail className="w-5 h-5 text-foreground flex-shrink-0 mt-0.5" />
-                <span className="text-foreground/80">Esclarecer dúvidas por e-mail</span>
-              </li>
-              <li className="flex gap-4">
-                <MessageCircle className="w-5 h-5 text-foreground flex-shrink-0 mt-0.5" />
-                <span className="text-foreground/80">Solicitar contato via WhatsApp para aprofundar pontos específicos</span>
-              </li>
-            </ul>
-            <p className="text-foreground/70 text-sm pt-2">
-              Existe acompanhamento real.
-            </p>
-          </section>
-
-          {/* SEÇÃO 9: STRIPE EMBED */}
-          <section id="bloco-pagamento" className="space-y-6 scroll-mt-20">
-            <h3 className="text-lg font-semibold text-foreground">
-              Finalizar pagamento
-            </h3>
-            <div className="flex justify-center">
-              <stripe-buy-button
-                buy-button-id="buy_btn_1SwUgYFUQ2CSrSZXXYE4L0Gs"
-                publishable-key="pk_live_51SwSVnFUQ2CSrSZX15h9htBOprc0v0ugwPBdw36kkMjijP2CSu2FWWtbUjrQehmAwknGbiD1URzxZMnYF5vyS7Kk00DYtti7N0"
-              />
             </div>
           </section>
 

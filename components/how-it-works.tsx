@@ -1,62 +1,68 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-
 export function HowItWorks() {
-  const steps = [
-    {
-      number: '01',
-      title: 'Responda o Questionário',
-      description:
-        'Complete nosso formulário inteligente com informações sobre sua ideia, mercado alvo e recursos disponíveis.',
-    },
-    {
-      number: '02',
-      title: 'Análise Automática',
-      description:
-        'Nossa ferramenta analisa suas respostas usando metodologia baseada em pesquisa com mais de 500 empreendimentos.',
-    },
-    {
-      number: '03',
-      title: 'Receba Seu Diagnóstico',
-      description:
-        'Obtenha um relatório detalhado com score de viabilidade, pontos fortes, fraquezas e recomendações específicas.',
-    },
-  ]
-
   return (
-    <section className="w-full border-t bg-secondary/30 px-4 py-12">
-      <div className="mx-auto max-w-6xl space-y-8">
+    <section className="w-full px-4 py-16 sm:py-20">
+      <div className="mx-auto max-w-4xl space-y-8">
+        {/* Título centralizado */}
         <div className="text-center">
-          <h2 className="text-balance text-3xl font-bold tracking-tight md:text-4xl">
-            Como Funciona
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground" style={{ fontSize: 'clamp(1.875rem, 5vw, 2.25rem)' }}>
+            Como funciona o diagnóstico
           </h2>
-          <p className="mt-2 text-base text-muted-foreground">
-            Três passos simples para validar sua ideia
+        </div>
+
+        {/* Texto introdutório centralizado */}
+        <div className="text-center max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-foreground/85 leading-relaxed">
+            O Visão Real analisa três dimensões fundamentais:
           </p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-3">
-          {steps.map((step, index) => (
-            <Card
-              key={index}
-              className="flex flex-col gap-4 bg-background"
-            >
-              <CardHeader>
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                    <span className="text-xl font-bold text-primary">
-                      {step.number}
-                    </span>
-                  </div>
-                </div>
-                <CardTitle className="text-xl">{step.title}</CardTitle>
-              </CardHeader>
-              <CardContent className="flex-1">
-                <p className="text-muted-foreground leading-relaxed">
-                  {step.description}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
+        {/* Lista numerada das três dimensões */}
+        <div className="space-y-4 max-w-2xl mx-auto">
+          <div className="flex gap-4">
+            <div className="flex-shrink-0">
+              <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground font-semibold text-sm">
+                1
+              </span>
+            </div>
+            <div className="flex-1">
+              <p className="text-foreground text-base sm:text-lg font-medium">
+                Estágio do negócio
+              </p>
+            </div>
+          </div>
+
+          <div className="flex gap-4">
+            <div className="flex-shrink-0">
+              <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground font-semibold text-sm">
+                2
+              </span>
+            </div>
+            <div className="flex-1">
+              <p className="text-foreground text-base sm:text-lg font-medium">
+                Estrutura do modelo
+              </p>
+            </div>
+          </div>
+
+          <div className="flex gap-4">
+            <div className="flex-shrink-0">
+              <span className="inline-flex items-center justify-center h-8 w-8 rounded-full bg-primary text-primary-foreground font-semibold text-sm">
+                3
+              </span>
+            </div>
+            <div className="flex-1">
+              <p className="text-foreground text-base sm:text-lg font-medium">
+                Padrão de decisão
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Texto conclusivo centralizado */}
+        <div className="text-center max-w-2xl mx-auto pt-4">
+          <p className="text-base sm:text-lg text-foreground/85 leading-relaxed">
+            Com base nisso o sistema identifica o tipo estrutural do seu negócio e o gargalo dominante.
+          </p>
         </div>
       </div>
     </section>
